@@ -14,4 +14,6 @@ class ProductController extends Controller
 
         return ProductResource::collection($products);
     }
+
+
 }
