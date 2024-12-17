@@ -14,8 +14,11 @@ class CategoryResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+        $productIds = $this->products->pluck('id');
+
         return [
             'id' => $this->id,
+            'product_ids' => $productIds,
             'name' => $this->name,
             'description' => $this->when($request->is('api/v*/categories*'), function () use ($request) {
                 if ($request->is('api/v*/categories')) {

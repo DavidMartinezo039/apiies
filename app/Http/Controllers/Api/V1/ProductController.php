@@ -14,7 +14,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::with('category')->paginate(9);
+        $products = Product::with('categories')->paginate(9);
 
         return ProductResource::collection($products);
     }
@@ -73,7 +73,6 @@ class ProductController extends Controller
         // Retornar la respuesta, puedes adaptarla según tus necesidades
         return response()->json([
             'category' => $category,
-            'products' => $products,
         ]);
     }
 }
