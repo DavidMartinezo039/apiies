@@ -62,4 +62,18 @@ class ProductController extends Controller
         return ProductResource::collection(Product::all());
     }
 
+    public function getProductsByCategory($categoryId)
+    {
+        // Verificar si la categoría existe
+        $category = Category::findOrFail($categoryId);
+
+        // Obtener los productos asociados a la categoría
+        $products = $category->products;
+
+        // Retornar la respuesta, puedes adaptarla según tus necesidades
+        return response()->json([
+            'category' => $category,
+            'products' => $products,
+        ]);
+    }
 }
