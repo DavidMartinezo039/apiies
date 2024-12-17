@@ -26,6 +26,8 @@ class ProductController extends Controller
 
     public function store(StoreProductRequest $request)
     {
+        abort_if(! auth()->user()->tokenCan('products-create'), 403, 'No tienes permisos para crear un producto');
+
         $data = $request->validated();
 
         /*
@@ -44,6 +46,8 @@ class ProductController extends Controller
 
     public function update(Product $product, StoreProductRequest $request)
     {
+        abort_if(! auth()->user()->tokenCan('products-update'), 403, 'No tienes permisos para actualizar un producto');
+
         $product->update($request->validated());
 
         return new ProductResource($product);
@@ -51,6 +55,8 @@ class ProductController extends Controller
 
     public function destroy(Product $product)
     {
+        abort_if(! auth()->user()->tokenCan('products-delete'), 403, 'No tienes permisos para eliminar un producto');
+
         $product->delete();
 
         //return response(null, Response::HTTP_NO_CONTENT);
