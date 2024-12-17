@@ -25,7 +25,6 @@ class StoreProductRequest extends FormRequest
             'name' => 'required',
             'description' => 'nullable',
             'price' => 'required',
-            'category_id' => 'required',
         ];
     }
 }
