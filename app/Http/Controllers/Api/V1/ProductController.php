@@ -30,14 +30,14 @@ class ProductController extends Controller
 
         $data = $request->validated();
 
-        /*
+
         if ($request->hasFile('photo')) {
             $file = $request->file('photo');
             $name = Str::uuid() . '.' . $file->extension();
             $file->storeAs('categories', $name, 'public');
             $data['photo'] = $name;
         }
-        */
+
 
 
         $product = Product::create($data);
