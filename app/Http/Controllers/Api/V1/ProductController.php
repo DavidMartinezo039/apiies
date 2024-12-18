@@ -38,9 +38,10 @@ class ProductController extends Controller
             $data['photo'] = $name;
         }
 
-
-
         $product = Product::create($data);
+
+        $product->categories()->attach($data['categories']);
+
         return new ProductResource($product);
     }
 

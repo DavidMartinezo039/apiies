@@ -14,11 +14,11 @@ class ProductResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $categoryIds = $this->categories->pluck('id');
+        $categoryIds = $this->categories->pluck('id')->toArray();
 
         return [
             'id' => $this->id,
-            'category_id' => $categoryIds,
+            'category_ids' => $categoryIds,
             'name' => $this->name,
             'description' => $this->description,
             'price' => number_format($this->price / 100, 2),

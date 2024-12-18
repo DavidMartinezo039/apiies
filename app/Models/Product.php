@@ -16,12 +16,11 @@ class Product extends Model
         'name',
         'description',
         'price',
-        'category_id',
         'photo',
     ];
 
     public function categories(): BelongsToMany
     {
-        return $this->belongsToMany(Category::class, 'category_product', 'category_id', 'product_id');
+        return $this->belongsToMany(Category::class, 'category_product', 'product_id','category_id');
     }
 }
