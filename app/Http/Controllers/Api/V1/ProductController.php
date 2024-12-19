@@ -21,6 +21,8 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {
+        $product->load('comments.user');
+
         return new ProductResource($product);
     }
 
